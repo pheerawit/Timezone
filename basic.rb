@@ -7,6 +7,7 @@ end
 
 
 post '/timezone' do
+	begin
 	input_city = params[:message]
 	check_in = input_city.split(' ')
 	if check_in[1] != nil 
@@ -29,6 +30,9 @@ post '/timezone' do
 		suffix = "AM"
 	end
 	 "The current time in #{params[:message]} is: " + "<br>" + "<br>" + "<br>" + new_hours.to_s + ":" + mins.to_s + suffix
+	rescue
+		"Can't find the time for the input city, try input the city name again with this format Bangkok the first letter is a capital letter and if the city name has more than 1 word separate them by space bar"
+end
 end
 
 
